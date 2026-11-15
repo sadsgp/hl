@@ -88,3 +88,34 @@ header .user .avatar{width:48px;height:48px;min-width:48px;flex:0 0 48px;border-
 .workflow-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px 24px;padding-block:24px}.workflow-steps .step{min-width:0;display:flex;align-items:center;flex-direction:row;text-align:right;gap:10px;color:#2e50d2}.workflow-steps .step i{flex:0 0 36px;background:#2e50d2;color:#fff}.workflow-steps .step:after{display:block;flex:1;min-width:10px;background:#dce2ec}.workflow-steps .step:nth-child(3n):after,.workflow-steps .step:last-child:after{display:none}.workflow-steps .step[aria-current="step"]{font-weight:700}.workflow-steps .step[aria-current="step"] i{background:#f58220;color:#fff;box-shadow:0 0 0 4px #ffead7}@media(max-width:730px){.workflow-steps{grid-template-columns:1fr;gap:12px}.workflow-steps .step:after{display:none}.workflow-steps .step{padding:4px}}
 .case-history{margin-top:24px;border:1px solid #dbe2ec;border-radius:12px;background:#fff;overflow:hidden}.case-history>summary{cursor:pointer;padding:16px 20px;background:#eef2f8;color:#14213d;font-weight:700;list-style-position:inside;user-select:none}.case-history>summary:focus-visible{outline:3px solid #f58220;outline-offset:-3px}.case-history[open]>summary{border-bottom:1px solid #dbe2ec}.history-count{font-size:.85em;font-weight:400}.case-history-content{padding:8px 20px 20px}
 @media(max-width:730px){.note,.note.strong{padding:12px 14px;font-size:14px}}
+
+/* v146: independently scrollable navigation and formal profile symbol */
+aside{overflow-y:auto;overscroll-behavior-y:contain;scrollbar-width:thin;scrollbar-color:#64748b #0f172a}
+aside>*{flex-shrink:0}
+header .user .avatar{background:#eef2f6;border:1px solid #cbd5e1;color:#334155}
+.formal-user-icon{display:block;position:relative;width:32px;height:34px}
+.formal-user-icon::before{content:"";position:absolute;width:11px;height:11px;border:1.8px solid currentColor;border-radius:50%;top:3px;left:10px}
+.formal-user-icon::after{content:"";position:absolute;width:24px;height:13px;border:1.8px solid currentColor;border-radius:12px 12px 4px 4px;bottom:2px;left:3px}
+
+/* v149: distinct, accessible profile-name colors by role */
+body[data-role="admin"] #userName{color:#1d4ed8}
+body[data-role="applicant"] #userName{color:#15803d}
+body[data-role="executive"] #userName{color:#92400e}
+body[data-role="hr"] #userName{color:#7e22ce}
+body[data-role="investigation"] #userName{color:#0e7490}
+body[data-role="officer"] #userName{color:#be185d}
+header .user #userName{font-weight:700}
+
+/* v150: choose applicant directly in the profile-name position */
+header .user .profile-person-select{width:auto;max-width:min(240px,55vw);padding:5px 8px;background:transparent;border:1px solid transparent;border-radius:6px;color:inherit;font:inherit;font-weight:700;cursor:pointer}
+header .user .profile-person-select:hover{background:#f0fdf4;border-color:#bbd7c4}
+header .user .profile-person-select:focus{border-color:#15803d;box-shadow:0 0 0 2px #15803d20}
+header .user .profile-person-select option{color:#14532d;background:white}
+
+/* v170: applicant undertaking */
+.undertaking-card{margin:24px 0;padding:26px;border:1px solid #c5d9e7;border-radius:20px;background:linear-gradient(135deg,#f0f8fc,#fff 65%);box-shadow:0 8px 26px #16354b0a;color:#20384b}.undertaking-card header{display:flex;align-items:center;gap:14px;flex-wrap:wrap;border-bottom:1px solid #dbe7ee;padding-bottom:18px}.undertaking-card header .badge{margin-inline-start:auto}.undertaking-seal{display:grid;place-items:center;width:48px;height:48px;border-radius:15px;background:#173c56;color:#fff;font-size:26px}.undertaking-eyebrow{font-size:11px;color:#54778d}.undertaking-card h3{margin:5px 0;font-size:19px}.undertaking-card p{line-height:2}.undertaking-card ol{padding-inline-start:30px;line-height:2.1}.undertaking-card li{padding:10px 8px;border-bottom:1px dashed #d8e4ec}.undertaking-card li::marker{color:#167d91;font-weight:bold}.undertaking-consent{padding:18px!important;background:#e4f2ee;border:1px solid #acd4c6;border-radius:12px;line-height:1.9}.undertaking-consent input{accent-color:#157b65;min-width:19px;min-height:19px}.undertaking-card footer{font-size:11px;color:#5a7080;line-height:1.9;margin-top:14px}@media(max-width:600px){.undertaking-card{padding:16px}.undertaking-card h3{font-size:16px}}
+
+/* v173: distinguish document receipt from bond-cost request */
+.checkbox.physical-docs-highlight{padding:18px 20px;background:#e8f2ff;border:1px solid #9abfea;border-right:5px solid #245ca6;border-radius:12px;color:#163f78;font-weight:700;line-height:2;margin:16px 0}
+.checkbox.bond-cost-highlight{padding:18px 20px;background:#f3eaff;border:1px solid #c6a6e7;border-right:5px solid #8544ad;border-radius:12px;color:#67318b;font-weight:700;line-height:2;margin:16px 0}
+.physical-docs-highlight input{accent-color:#245ca6}.bond-cost-highlight input{accent-color:#8544ad}.undertaking-closing{font-weight:700;color:#163f50}

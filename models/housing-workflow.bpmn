@@ -2947,7 +2947,7 @@
 				</vp:Extensions>
 			</extensionElements>
 		</sequenceFlow>
-		<sequenceFlow id="ResubmitCorrection" name="ارسال اصلاحت جهت بررسی بالاترین مقام اجرایی واحد" sourceRef="correctRequest" targetRef="Merge_executive">
+		<sequenceFlow id="ResubmitCorrection" name="ارسال اصلاحات جهت بررسی بالاترین مقام اجرایی واحد" sourceRef="correctRequest" targetRef="Merge_executive">
 			<extensionElements>
 				<vp:Extensions>
 					<vp:ModelExtension>
@@ -3170,13 +3170,13 @@
 				<omgdc:Bounds height="500" width="7920" x="66" y="560"/>
 			</bpmndi:BPMNShape>
 			<bpmndi:BPMNShape bpmnElement="Lane_Executive" id="DI_Lane_Executive" isHorizontal="true">
-				<omgdc:Bounds height="500" width="7920" x="66" y="1060"/>
+				<omgdc:Bounds height="490" width="7920" x="66" y="1060"/>
 			</bpmndi:BPMNShape>
 			<bpmndi:BPMNShape bpmnElement="Lane_HR" id="DI_Lane_HR" isHorizontal="true">
 				<omgdc:Bounds height="500" width="7920" x="66" y="1550"/>
 			</bpmndi:BPMNShape>
 			<bpmndi:BPMNShape bpmnElement="Lane_Research" id="DI_Lane_Research" isHorizontal="true">
-				<omgdc:Bounds height="500" width="7920" x="66" y="2050"/>
+				<omgdc:Bounds height="490" width="7920" x="66" y="2050"/>
 			</bpmndi:BPMNShape>
 			<bpmndi:BPMNShape bpmnElement="Lane_Officer" id="DI_Lane_Officer" isHorizontal="true">
 				<omgdc:Bounds height="500" width="7920" x="66" y="2540"/>
@@ -3186,6 +3186,7 @@
 			</bpmndi:BPMNShape>
 			<bpmndi:BPMNShape bpmnElement="eligible" id="DI_eligible">
 				<omgdc:Bounds height="40" width="40" x="1597" y="220"/>
+                <bpmndi:BPMNLabel><omgdc:Bounds x="1537" y="162" width="160" height="50"/></bpmndi:BPMNLabel>
 			</bpmndi:BPMNShape>
 			<bpmndi:BPMNShape bpmnElement="exception" id="DI_exception">
 				<omgdc:Bounds height="100" width="210" x="1512" y="350"/>
@@ -3198,19 +3199,19 @@
 			</bpmndi:BPMNShape>
 			<bpmndi:BPMNShape bpmnElement="consent" id="DI_consent">
 				<omgdc:Bounds height="40" width="40" x="3032" y="720"/>
-			</bpmndi:BPMNShape>
+			<bpmndi:BPMNLabel><omgdc:Bounds x="2972" y="662" width="160" height="50"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
 			<bpmndi:BPMNShape bpmnElement="withdrawn" id="DI_withdrawn">
 				<omgdc:Bounds height="40" width="40" x="3461" y="720"/>
-			</bpmndi:BPMNShape>
+			<bpmndi:BPMNLabel><omgdc:Bounds x="3401" y="768" width="160" height="50"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
 			<bpmndi:BPMNShape bpmnElement="executive" id="DI_executive">
 				<omgdc:Bounds height="100" width="210" x="3376" y="1180"/>
 			</bpmndi:BPMNShape>
 			<bpmndi:BPMNShape bpmnElement="execDecision" id="DI_execDecision">
 				<omgdc:Bounds height="40" width="40" x="3956" y="1210"/>
-			</bpmndi:BPMNShape>
+			<bpmndi:BPMNLabel><omgdc:Bounds x="3984" y="1236" width="110" height="32"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
 			<bpmndi:BPMNShape bpmnElement="execRejected" id="DI_execRejected">
 				<omgdc:Bounds height="40" width="40" x="4366" y="1210"/>
-			</bpmndi:BPMNShape>
+			<bpmndi:BPMNLabel><omgdc:Bounds x="4306" y="1258" width="160" height="50"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
 			<bpmndi:BPMNShape bpmnElement="hrInitial" id="DI_hrInitial">
 				<omgdc:Bounds height="100" width="210" x="4300" y="1800"/>
 			</bpmndi:BPMNShape>
@@ -3228,7 +3229,7 @@
 			</bpmndi:BPMNShape>
 			<bpmndi:BPMNShape bpmnElement="finalDecision" id="DI_finalDecision">
 				<omgdc:Bounds height="40" width="40" x="6285" y="1830"/>
-			</bpmndi:BPMNShape>
+			<bpmndi:BPMNLabel><omgdc:Bounds x="6337" y="1834" width="120" height="32"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
 			<bpmndi:BPMNShape bpmnElement="reports" id="DI_reports">
 				<omgdc:Bounds height="100" width="210" x="6682" y="2896"/>
 			</bpmndi:BPMNShape>
@@ -3265,7 +3266,7 @@
 			<bpmndi:BPMNEdge bpmnElement="Flow_4" id="DI_Flow_4">
 				<omgdi:waypoint x="1616" y="259"/>
 				<omgdi:waypoint x="1616" y="349"/>
-			</bpmndi:BPMNEdge>
+			<bpmndi:BPMNLabel><omgdc:Bounds x="1586" y="290" width="60" height="28"/></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
 			<bpmndi:BPMNEdge bpmnElement="Flow_23" id="DI_Flow_23">
 				<omgdi:waypoint x="7296" y="1850"/>
 				<omgdi:waypoint x="7620" y="1850"/>
@@ -3281,7 +3282,7 @@
 			<bpmndi:BPMNEdge bpmnElement="Flow_17" id="DI_Flow_17">
 				<omgdi:waypoint x="5930" y="1850"/>
 				<omgdi:waypoint x="6285" y="1850"/>
-			</bpmndi:BPMNEdge>
+			<bpmndi:BPMNLabel><omgdc:Bounds x="5935" y="1812" width="345" height="32"/></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
 			<bpmndi:BPMNEdge bpmnElement="Flow_10" id="DI_Flow_10">
 				<omgdi:waypoint x="3586" y="1230"/>
 				<omgdi:waypoint x="3956" y="1230"/>
@@ -3293,7 +3294,7 @@
 			<bpmndi:BPMNEdge bpmnElement="Flow_5" id="DI_Flow_5">
 				<omgdi:waypoint x="1636" y="239"/>
 				<omgdi:waypoint x="2127" y="239"/>
-			</bpmndi:BPMNEdge>
+			<bpmndi:BPMNLabel><omgdc:Bounds x="1851.5" y="211" width="60" height="28"/></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
 			<bpmndi:BPMNEdge bpmnElement="Ex3" id="DI_Ex3">
 				<omgdi:waypoint x="1722" y="1890"/>
 				<omgdi:waypoint x="2125" y="1890"/>
@@ -3313,21 +3314,21 @@
 			<bpmndi:BPMNEdge bpmnElement="Ex2" id="DI_Ex2">
 				<omgdi:waypoint x="1617" y="1440"/>
 				<omgdi:waypoint x="1617" y="1840"/>
-			</bpmndi:BPMNEdge>
+			<bpmndi:BPMNLabel><omgdc:Bounds x="1537" y="1624" width="160" height="32"/></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
 			<bpmndi:BPMNEdge bpmnElement="Flow_9" id="DI_Flow_9">
 				<omgdi:waypoint x="3051" y="760"/>
 				<omgdi:waypoint x="3051" y="1203"/>
-			</bpmndi:BPMNEdge>
+			<bpmndi:BPMNLabel><omgdc:Bounds x="2931" y="965.5" width="240" height="32"/></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
 			<bpmndi:BPMNEdge bpmnElement="Flow_15" id="DI_Flow_15">
 				<omgdi:waypoint x="5049" y="1867"/>
 				<omgdi:waypoint x="5049" y="2222"/>
 				<omgdi:waypoint x="5294" y="2222"/>
-			</bpmndi:BPMNEdge>
+			<bpmndi:BPMNLabel><omgdc:Bounds x="4934" y="2016.5" width="230" height="56"/></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
 			<bpmndi:BPMNEdge bpmnElement="Flow_12" id="DI_Flow_12">
 				<omgdi:waypoint x="3976" y="1249"/>
 				<omgdi:waypoint x="3976" y="1849"/>
 				<omgdi:waypoint x="4300" y="1849"/>
-			</bpmndi:BPMNEdge>
+			<bpmndi:BPMNLabel><omgdc:Bounds x="3946" y="1535" width="60" height="28"/></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
 			<bpmndi:BPMNEdge bpmnElement="Flow_6" id="DI_Flow_6">
 				<omgdi:waypoint x="2590" y="289"/>
 				<omgdi:waypoint x="2590" y="689"/>
@@ -3340,18 +3341,18 @@
 			<bpmndi:BPMNEdge bpmnElement="Ex1" id="DI_Ex1">
 				<omgdi:waypoint x="1617" y="450"/>
 				<omgdi:waypoint x="1617" y="1340"/>
-			</bpmndi:BPMNEdge>
+			<bpmndi:BPMNLabel><omgdc:Bounds x="1537" y="879" width="160" height="32"/></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
 			<bpmndi:BPMNEdge bpmnElement="ExecutiveReturnForCorrection" id="DI_ExecutiveReturnForCorrection">
 				<omgdi:waypoint x="3974" y="1212"/>
 				<omgdi:waypoint x="3974" y="390"/>
 				<omgdi:waypoint x="4386" y="390"/>
-			</bpmndi:BPMNEdge>
+			<bpmndi:BPMNLabel><omgdc:Bounds x="3874" y="785" width="200" height="32"/></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
 			<bpmndi:BPMNEdge bpmnElement="ResubmitCorrection" id="DI_ResubmitCorrection">
 				<omgdi:waypoint x="4826" y="439"/>
 				<omgdi:waypoint x="4826" y="1359"/>
 				<omgdi:waypoint x="3051" y="1364"/>
 				<omgdi:waypoint x="3051" y="1241"/>
-			</bpmndi:BPMNEdge>
+			<bpmndi:BPMNLabel><omgdc:Bounds x="4030" y="1323" width="440" height="32"/></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
 			<bpmndi:BPMNEdge bpmnElement="ReturnForCorrection" id="DI_ReturnForCorrection">
 				<omgdi:waypoint x="5049" y="1832"/>
 				<omgdi:waypoint x="5049" y="240"/>
@@ -3394,7 +3395,7 @@
 				<omgdi:waypoint x="6306" y="1870"/>
 				<omgdi:waypoint x="6306" y="2946"/>
 				<omgdi:waypoint x="6682" y="2946"/>
-			</bpmndi:BPMNEdge>
+			<bpmndi:BPMNLabel><omgdc:Bounds x="6226" y="2392" width="160" height="32"/></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
 			<bpmndi:BPMNShape bpmnElement="Lane_HR_BP01" id="ID_33200012_4670_2600_2416_001015400003">
 				<omgdc:Bounds height="20" width="20" x="6296" y="1646"/>
 			</bpmndi:BPMNShape>

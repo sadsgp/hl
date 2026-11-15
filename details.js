@@ -61,6 +61,22 @@ function profileAndDetails(r){
  return ['draft','unknown','awaiting_admin_correction'].includes(r.state)?html:collapsibleRequestDetails(html);
 }
 function collapsibleRequestDetails(html){return html.split(/<h3>(.*?)<\/h3>/).slice(1).reduce((result,part,index,parts)=>index%2===0?result+'<details class="request-detail-panel case-history"><summary>'+part+'</summary><div class="case-history-content">'+parts[index+1]+'</div></details>':result,'');}
+// Fictitious application fixtures for prototype autofill; not inquiry results.
+function fillRequestFromApplicant(r){
+ const index=Object.keys(behkoFixtures).indexOf(r.person.id);
+ if(index<0)return;
+ const salary=[35000000,28000000,42000000,32000000,38000000,45000000][index];
+ r.applicationDetails={requestedAmount:String(4000000000+index*500000000),registryOwnership:'استفاده نشده است',residenceType:'استیجاری با پرداخت اجاره',currentLocation:(r.person.scope==='qeshm'?'قشم':r.person.scope==='hq'?'اصفهان':'تهران')+'، نشانی نمونهٔ متقاضی '+r.person.name,residenceDuration:(index+1)+' سال',familyOwnership:'خیر',previousGroupHousing:r.person.loan?'بله':'خیر',averageMonthlySalary:String(salary),otherIncome:String(index*1000000),maximumDownPayment:String(500000000+index*100000000),currentInstallments:String(index*2000000),housingRepaymentCapacity:String(Math.floor(salary*0.35)),adminPaymentAssessment:'ارزیابی نمونه: توان تأمین آورده اولیه و پرداخت اقساط نیازمند بازبینی سرپرست است.',averageMonthlyPerformance:String(80+index*2)+' از ۱۰۰',remarks:'اطلاعات ساختگی برای نمایش پروتوتایپ؛ پیش از ثبت، توسط سرپرست بازبینی شود.'};
+ delete r.familyOwnershipDecision;delete r.previousHousingDecision;r.previousHousingConfirmed=false;
+ r.checked=false;r.eligible=false;delete r.checkedAt;
+}
+function toggleRequestAutoFill(enabled){
+ if(ROLE!=='admin'||!current||!['draft','unknown'].includes(current.state))return;
+ if(enabled&&current.person&&Object.values(current.applicationDetails||{}).some(v=>v!==''&&v!=null)&&!confirm('اطلاعات فعلی درخواست با اطلاعات نمونهٔ متقاضی جایگزین شود؟')){renderForm();return;}
+ current.autoFillRequest=enabled;
+ if(enabled&&current.person){fillRequestFromApplicant(current);current.state='draft';}
+ renderForm();
+}
 function normalizeMoney(value){return String(value).replace(/[۰-۹]/g,c=>'۰۱۲۳۴۵۶۷۸۹'.indexOf(c)).replace(/[٠-٩]/g,c=>'٠١٢٣٤٥٦٧٨٩'.indexOf(c)).replace(/[,٬\s]/g,'')}
 function updateApplicationDetail(key,input){
  if(ROLE!=='admin'||!['draft','unknown','awaiting_admin_correction'].includes(current.state))return;

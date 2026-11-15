@@ -4,6 +4,100 @@
   let viewer;
   let loading = false;
   let portrait = false;
+  const themes = [
+    ['navy', 'سورمه‌ای', '#0d1b2a'], ['blue', 'آبی', '#1e40af'],
+    ['orange', 'نارنجی', '#9a3412'], ['purple', 'بنفش', '#6b21a8'],
+    ['green', 'سبز', '#166534'], ['teal', 'فیروزه‌ای', '#115e59'],
+    ['rose', 'زرشکی', '#9f1239'], ['slate', 'خاکستری', '#334155']
+  ];
+  let selectedTheme = 'blue';
+  try { selectedTheme = localStorage.getItem('housing-bpmn-theme-v166') || 'blue'; } catch (_) {}
+  if (!themes.some(t => t[0] === selectedTheme)) selectedTheme = 'blue';
+  function applyTheme() {
+    const color = themes.find(t => t[0] === selectedTheme)[2];
+    if (viewer) {
+      const registry = viewer.get('elementRegistry');
+      registry.getAll().filter(e => e.type === 'bpmn:UserTask').forEach(e => {
+        const rect = registry.getGraphics(e).querySelector('.djs-visual > rect');
+        if (rect) rect.style.setProperty('fill', color, 'important');
+      });
+    }
+    themePanel.querySelectorAll('button').forEach(b => {
+      const active = b.dataset.theme === selectedTheme;
+      b.setAttribute('aria-pressed', String(active));
+      b.style.outline = active ? '3px solid #94a3b8' : 'none';
+      b.style.outlineOffset = '2px';
+    });
+  }
+  const themePanel = document.createElement('div');
+  themePanel.className = 'bpmn-theme-panel';
+  themePanel.setAttribute('role', 'group');
+  themePanel.setAttribute('aria-label', 'تم رنگ پس‌زمینه تسک‌ها');
+  themePanel.style.cssText = 'display:flex;align-items:center;flex-wrap:wrap;gap:8px;padding:9px 12px;margin:10px 0;border:1px solid #cbd5e1;border-radius:9px;background:#f8fafc;direction:rtl;font-size:12px';
+  const themeTitle = document.createElement('strong');
+  themeTitle.textContent = 'تم';
+  themePanel.appendChild(themeTitle);
+  themes.forEach(([id, name, color]) => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.textContent = name;
+    button.dataset.theme = id;
+    button.style.cssText = `background:${color};color:#fff;border:1px solid transparent;border-radius:6px;padding:5px 10px;font:inherit;line-height:1.5;cursor:pointer`;
+    button.onclick = () => {
+      selectedTheme = id;
+      try { localStorage.setItem('housing-bpmn-theme-v166', id); } catch (_) {}
+      applyTheme();
+    };
+    themePanel.appendChild(button);
+  });
+  canvas.parentElement.insertBefore(themePanel, document.getElementById('bpmn-status'));
+  applyTheme();
+  const laneThemes = [
+    ['blue', 'آبی', '#eff6ff'], ['navy', 'سورمه‌ای', '#e2e8f0'],
+    ['orange', 'نارنجی', '#fff7ed'], ['purple', 'بنفش', '#f5f3ff'],
+    ['green', 'سبز', '#f0fdf4'], ['teal', 'فیروزه‌ای', '#f0fdfa'],
+    ['rose', 'صورتی', '#fff1f2'], ['white', 'سفید', '#ffffff']
+  ];
+  let selectedLaneTheme = 'blue';
+  try { selectedLaneTheme = localStorage.getItem('housing-bpmn-lane-theme') || 'blue'; } catch (_) {}
+  if (!laneThemes.some(t => t[0] === selectedLaneTheme)) selectedLaneTheme = 'blue';
+  const lanePanel = document.createElement('div');
+  lanePanel.style.cssText = themePanel.style.cssText;
+  lanePanel.setAttribute('role', 'group');
+  lanePanel.setAttribute('aria-label', 'تم رنگ Laneها');
+  const laneTitle = document.createElement('strong');
+  laneTitle.textContent = 'تم Laneها';
+  lanePanel.appendChild(laneTitle);
+  themeTitle.textContent = 'تم تسک‌ها';
+  function applyLaneTheme() {
+    const color = laneThemes.find(t => t[0] === selectedLaneTheme)[2];
+    if (viewer) {
+      const registry = viewer.get('elementRegistry');
+      registry.getAll().filter(e => e.type === 'bpmn:Lane' || e.type === 'bpmn:Participant').forEach(e => {
+        const rect = registry.getGraphics(e).querySelector('.djs-visual > rect');
+        if (rect) { rect.style.setProperty('fill', color, 'important'); rect.style.setProperty('fill-opacity', '1', 'important'); }
+      });
+    }
+    lanePanel.querySelectorAll('button').forEach(b => {
+      const active = b.dataset.theme === selectedLaneTheme;
+      b.setAttribute('aria-pressed', String(active));
+      b.style.outline = active ? '3px solid #94a3b8' : 'none';
+      b.style.outlineOffset = '2px';
+    });
+  }
+  laneThemes.forEach(([id, name, color]) => {
+    const button = document.createElement('button');
+    button.type = 'button'; button.textContent = name; button.dataset.theme = id;
+    button.style.cssText = `background:${themes.find(t => t[0] === id)?.[2] || '#64748b'};color:#fff;border:1px solid transparent;border-radius:6px;padding:5px 10px;font:inherit;line-height:1.5;cursor:pointer`;
+    button.onclick = () => {
+      selectedLaneTheme = id;
+      try { localStorage.setItem('housing-bpmn-lane-theme', id); } catch (_) {}
+      applyLaneTheme();
+    };
+    lanePanel.appendChild(button);
+  });
+  themePanel.after(lanePanel);
+  applyLaneTheme();
   function layoutXML() {
     const source = document.getElementById('bpmn-source').textContent;
     if (!portrait) return source;
@@ -80,6 +174,43 @@
         registry.getAll().forEach(element => {
           const isTask = element.type === 'bpmn:UserTask';
           const isLabel = element.type === 'label';
+          if (element.type === 'bpmn:Participant') {
+            // The pool's built-in header separator crosses the lane titles.
+            registry.getGraphics(element).querySelectorAll('.djs-visual > path, .djs-visual > polyline').forEach(line => line.remove());
+          }
+          if (element.type === 'bpmn:Lane') {
+            // Use an explicitly centred HTML title, avoiding SVG RTL anchoring
+            // that pushes Persian text onto the lane's separator line.
+            const visual = registry.getGraphics(element).querySelector('.djs-visual');
+            visual.querySelectorAll('text').forEach(text => text.remove());
+            const ns = 'http://www.w3.org/2000/svg';
+            const separator = document.createElementNS(ns, 'path');
+            separator.setAttribute('d', `M 30 0 L 30 ${element.height}`);
+            separator.setAttribute('stroke', '#334d70');
+            separator.setAttribute('stroke-width', '1.5');
+            separator.setAttribute('fill', 'none');
+            visual.appendChild(separator);
+            const group = document.createElementNS(ns, 'g');
+            const horizontal = element.di ? element.di.isHorizontal !== false : true;
+            const length = horizontal ? element.height : element.width;
+            group.setAttribute('transform', horizontal
+              ? `translate(15,${element.height / 2}) rotate(-90)`
+              : `translate(${element.width / 2},15)`);
+            const foreign = document.createElementNS(ns, 'foreignObject');
+            foreign.setAttribute('x', String(-length / 2));
+            foreign.setAttribute('y', '-15');
+            foreign.setAttribute('width', String(length));
+            foreign.setAttribute('height', '30');
+            foreign.style.pointerEvents = 'none';
+            const title = document.createElementNS('http://www.w3.org/1999/xhtml', 'div');
+            title.setAttribute('dir', 'rtl');
+            title.className = 'bpmn-lane-title';
+            title.textContent = element.businessObject.name || '';
+            title.style.cssText = 'width:100%;height:100%;display:flex;align-items:center;justify-content:center;box-sizing:border-box;white-space:nowrap;font-family:Vazir,sans-serif;font-size:19px;font-weight:700;line-height:1;color:#0d1b2a;text-align:center;';
+            foreign.appendChild(title);
+            group.appendChild(foreign);
+            visual.appendChild(group);
+          }
           if (element.type === 'bpmn:StartEvent') {
             const circle = registry.getGraphics(element).querySelector('.djs-visual > circle');
             if (circle) {
@@ -149,10 +280,20 @@
             title.style.alignItems = 'flex-end';
             title.dataset.flowId = element.businessObject.id;
           }
+          if (isLabel && ['BP03', 'Ex1', 'Ex2', 'Flow_9', 'ExecutiveReturnForCorrection'].includes(element.businessObject.id)) {
+            title.style.alignItems = 'center';
+            title.style.whiteSpace = 'nowrap';
+          }
+          if (isLabel && ['ResubmitCorrection', 'Flow_17'].includes(element.businessObject.id)) {
+            title.style.whiteSpace = 'nowrap';
+            title.style.flexWrap = 'nowrap';
+          }
           foreign.appendChild(title);
           visual.appendChild(foreign);
         });
       }
+      applyTheme();
+      applyLaneTheme();
       viewer.get('canvas').resized();
       viewer.get('canvas').zoom('fit-viewport', 'auto');
       document.getElementById('bpmn-status').textContent = 'برای جابه‌جایی نمودار بکشید؛ برای بزرگ‌نمایی از دکمه‌ها استفاده کنید.';
