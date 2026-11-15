@@ -1,0 +1,190 @@
+erDiagram
+ ORGANIZATION_UNIT ||--o{ EMPLOYEE : employs
+ EMPLOYEE ||--o{ USER_ACCOUNT : has
+ USER_ACCOUNT ||--o{ USER_ROLE : assigned
+ ROLE ||--o{ USER_ROLE : grants
+ ORGANIZATION_UNIT ||--o{ USER_ROLE : scopes
+ EMPLOYEE ||--o{ HOUSING_REQUEST : applies
+ USER_ACCOUNT ||--o{ HOUSING_REQUEST : registers
+ HOUSING_REQUEST ||--o{ ELIGIBILITY_CHECK : checks
+ HOUSING_REQUEST ||--o{ DOCUMENT : attaches
+ DOCUMENT_TYPE ||--o{ DOCUMENT : classifies
+ USER_ACCOUNT ||--o{ DOCUMENT : uploads
+ HOUSING_REQUEST ||--o{ OTP_CHALLENGE : confirms
+ HOUSING_REQUEST ||--o{ SMS_MESSAGE : notifies
+ HOUSING_REQUEST ||--o{ DECISION : records
+ USER_ACCOUNT ||--o{ DECISION : decides
+ HOUSING_REQUEST ||--o{ CORRECTION_ROUND : returns
+ USER_ACCOUNT ||--o{ CORRECTION_ROUND : initiates
+ HOUSING_REQUEST ||--o{ EXCEPTION_ACTION : escalates
+ USER_ACCOUNT ||--o{ EXCEPTION_ACTION : acts
+ HOUSING_REQUEST ||--o{ INVESTIGATION : investigates
+ USER_ACCOUNT ||--o{ INVESTIGATION : investigates
+ HOUSING_REQUEST ||--o{ OFFICER_REPORT : reports
+ USER_ACCOUNT ||--o{ OFFICER_REPORT : authors
+ OFFICER_REPORT ||--o{ DOCUMENT : supports
+ DECISION ||--o{ DOCUMENT : supports
+ HOUSING_REQUEST ||--o| BOND_REQUEST : requests
+ HOUSING_REQUEST ||--o| FINANCIAL_SUMMARY : summarizes
+ HOUSING_REQUEST ||--o{ AUDIT_EVENT : tracks
+ USER_ACCOUNT ||--o{ AUDIT_EVENT : performs
+ ORGANIZATION_UNIT {
+ string id PK
+ string name
+ string parent_id FK
+ }
+ EMPLOYEE {
+ string id PK
+ string unit_id FK
+ string full_name
+ string national_id
+ string employment_type
+ date employment_date
+ string marital_status
+ string phone
+ }
+ USER_ACCOUNT {
+ string id PK
+ string employee_id FK
+ string username UK
+ string password_hash
+ boolean active
+ }
+ ROLE {
+ string id PK
+ string name UK
+ }
+ USER_ROLE {
+ string id PK
+ string user_id FK
+ string role_id FK
+ string unit_id FK
+ }
+ HOUSING_REQUEST {
+ string id PK
+ string applicant_id FK
+ string registrar_id FK
+ string scope
+ string type
+ string state
+ datetime created_at
+ boolean physical_documents_received
+ boolean certified
+ datetime certified_at
+ text application_details
+ }
+ ELIGIBILITY_CHECK {
+ string id PK
+ string request_id FK
+ string kind
+ boolean eligible
+ text result
+ datetime checked_at
+ }
+ DOCUMENT_TYPE {
+ string id PK
+ string title
+ string required_condition
+ }
+ DOCUMENT {
+ string id PK
+ string request_id FK
+ string document_type_id FK
+ string uploader_id FK
+ string report_id FK
+ string decision_id FK
+ string file_name
+ string mime_type
+ string storage_key
+ int version
+ datetime created_at
+ }
+ OTP_CHALLENGE {
+ string id PK
+ string request_id FK
+ string purpose
+ string token_hash
+ datetime expires_at
+ datetime verified_at
+ int attempts
+ }
+ SMS_MESSAGE {
+ string id PK
+ string request_id FK
+ string recipient
+ text body
+ datetime sent_at
+ string status
+ }
+ DECISION {
+ string id PK
+ string request_id FK
+ string actor_id FK
+ string stage
+ string outcome
+ text opinion
+ boolean workgroup_reviewed
+ text workgroup_opinion
+ decimal approved_amount
+ datetime decided_at
+ }
+ CORRECTION_ROUND {
+ string id PK
+ string request_id FK
+ string returned_by_id FK
+ text reason
+ json snapshot
+ text response
+ datetime returned_at
+ datetime resubmitted_at
+ boolean applicant_otp_skipped
+ }
+ EXCEPTION_ACTION {
+ string id PK
+ string request_id FK
+ string actor_id FK
+ string action
+ text opinion
+ datetime acted_at
+ }
+ INVESTIGATION {
+ string id PK
+ string request_id FK
+ string investigator_id FK
+ string result
+ text opinion
+ datetime submitted_at
+ }
+ OFFICER_REPORT {
+ string id PK
+ string request_id FK
+ string author_id FK
+ string title
+ text description
+ string report_type
+ datetime created_at
+ datetime sent_at
+ datetime viewed_at
+ }
+ BOND_REQUEST {
+ string id PK
+ string request_id FK,UK
+ boolean requested
+ decimal requested_amount
+ }
+ FINANCIAL_SUMMARY {
+ string id PK
+ string request_id FK,UK
+ int bond_purchased_quantity
+ decimal bond_purchase_paid
+ decimal housing_payable_amount
+ }
+ AUDIT_EVENT {
+ string id PK
+ string request_id FK
+ string actor_id FK
+ string actor_role
+ string action
+ text description
+ datetime occurred_at
+ }

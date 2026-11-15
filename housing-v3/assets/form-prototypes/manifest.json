@@ -1,0 +1,86 @@
+[
+  {
+    "file": "form-01.png",
+    "title": "ثبت و تکمیل درخواست خرید مسکن",
+    "role": "admin",
+    "state": "draft"
+  },
+  {
+    "file": "form-02.png",
+    "title": "ثبت و تکمیل درخواست ساخت مسکن",
+    "role": "admin",
+    "state": "draft"
+  },
+  {
+    "file": "form-03.png",
+    "title": "دریافت مدارک و تأیید اصالت؛ هزینه اوراق",
+    "role": "admin",
+    "state": "awaiting_documents"
+  },
+  {
+    "file": "form-04.png",
+    "title": "بازبینی اطلاعات و تأیید متقاضی",
+    "role": "applicant",
+    "state": "awaiting_applicant"
+  },
+  {
+    "file": "form-05.png",
+    "title": "نظر بالاترین مقام اجرایی واحد",
+    "role": "executive",
+    "state": "awaiting_executive"
+  },
+  {
+    "file": "form-06.png",
+    "title": "نظر اولیه و مبلغ مصوب سرمایه انسانی",
+    "role": "hr",
+    "state": "executive_approved"
+  },
+  {
+    "file": "form-07.png",
+    "title": "نتیجه بررسی و تحقیق",
+    "role": "investigation",
+    "state": "awaiting_investigation"
+  },
+  {
+    "file": "form-08.png",
+    "title": "تصمیم نهایی مدیر سرمایه انسانی",
+    "role": "hr",
+    "state": "awaiting_hr_review"
+  },
+  {
+    "file": "form-09.png",
+    "title": "ثبت گزارش و هماهنگی بانکی",
+    "role": "officer",
+    "state": "awaiting_officer"
+  },
+  {
+    "file": "form-10.png",
+    "title": "مشاهده گزارش‌ها و پایان گردش",
+    "role": "hr",
+    "state": "awaiting_hr_report"
+  },
+  {
+    "file": "form-11.png",
+    "title": "عدم احراز اولیه و درخواست استثنا",
+    "role": "admin",
+    "state": "exception"
+  },
+  {
+    "file": "form-12.png",
+    "title": "ارجاع استثنا توسط مقام اجرایی",
+    "role": "executive",
+    "state": "exception_executive"
+  },
+  {
+    "file": "form-13.png",
+    "title": "تصمیم سرمایه انسانی درباره استثنا",
+    "role": "hr",
+    "state": "exception_hr"
+  },
+  {
+    "file": "form-14.png",
+    "title": "اصلاح سرپرست اداری و مشاهده نظرات ثبت‌شده",
+    "role": "admin",
+    "state": "awaiting_admin_correction"
+  }
+]

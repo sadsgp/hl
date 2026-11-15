@@ -1,0 +1,27 @@
+.project-analysis{margin-top:32px;text-align:right;line-height:2;overflow:hidden}.project-analysis .cardhead,.project-analysis .body{padding:22px}.analysis-nav{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0}.analysis-nav a{padding:5px 12px;background:#edf3fc;border-radius:8px;color:#17365c;text-decoration:none}.project-analysis details{border:1px solid #dbe3ef;border-radius:12px;margin:14px 0;padding:14px 18px;scroll-margin-top:18px}.project-analysis summary{cursor:pointer;font-size:1.08rem;font-weight:700;color:#17365c}.project-analysis table{width:100%;border-collapse:collapse;min-width:600px}.project-analysis th,.project-analysis td{padding:10px;border:1px solid #dbe3ef;text-align:right;vertical-align:top}.project-analysis th{background:#edf3fc}.project-analysis .tablewrap{overflow-x:auto;margin:16px 0}.project-analysis code{direction:ltr;unicode-bidi:embed;display:inline-block;font-size:.85em;overflow-wrap:anywhere}.project-analysis li{margin:8px 0}.analysis-print{margin:16px 0}@media print{body{background:white!important}.demo,.landingcards,.landing>.badge,.landing>h1,.landing>.subtitle,.landing>.note,.landing>.sp,.landing>.foot,.analysis-print,.analysis-nav{display:none!important}.landing{max-width:none!important;padding:0!important}.project-analysis{border:0!important;box-shadow:none!important;margin:0!important}.project-analysis details{break-inside:auto}.project-analysis summary{break-after:avoid}.project-analysis .tablewrap{overflow:visible}.project-analysis table{min-width:0;font-size:10pt}a{color:inherit}}
+
+/* Distinct, readable topic colors, shared by both analysis documents. */
+.analysis-nav a:nth-child(15n+1){background:#e0f2fe;color:#075985;border:1px solid #07598530}
+.analysis-nav a:nth-child(15n+2){background:#dcfce7;color:#166534;border:1px solid #16653430}
+.analysis-nav a:nth-child(15n+3){background:#fef3c7;color:#92400e;border:1px solid #92400e30}
+.analysis-nav a:nth-child(15n+4){background:#ede9fe;color:#5b21b6;border:1px solid #5b21b630}
+.analysis-nav a:nth-child(15n+5){background:#ffe4e6;color:#9f1239;border:1px solid #9f123930}
+.analysis-nav a:nth-child(15n+6){background:#ccfbf1;color:#115e59;border:1px solid #115e5930}
+.analysis-nav a:nth-child(15n+7){background:#ffedd5;color:#9a3412;border:1px solid #9a341230}
+.analysis-nav a:nth-child(15n+8){background:#e0e7ff;color:#3730a3;border:1px solid #3730a330}
+.analysis-nav a:nth-child(15n+9){background:#fae8ff;color:#86198f;border:1px solid #86198f30}
+.analysis-nav a:nth-child(15n+10){background:#ecfccb;color:#3f6212;border:1px solid #3f621230}
+.analysis-nav a:nth-child(15n+11){background:#cffafe;color:#155e75;border:1px solid #155e7530}
+.analysis-nav a:nth-child(15n+12){background:#fce7f3;color:#9d174d;border:1px solid #9d174d30}
+.analysis-nav a:nth-child(15n+13){background:#f1f5f9;color:#334155;border:1px solid #33415530}
+.analysis-nav a:nth-child(15n+14){background:#fef9c3;color:#854d0e;border:1px solid #854d0e30}
+.analysis-nav a:nth-child(15n+15){background:#d1fae5;color:#065f46;border:1px solid #065f4630}
+.analysis-nav a:hover{filter:brightness(.95);text-decoration:underline}.analysis-nav a:focus-visible{outline:3px solid #2563eb;outline-offset:2px}@media print{.business-print{display:none!important}}
+
+#bpmn-canvas{height:650px;width:100%;background:white;border:1px solid #cbd5e1;border-radius:12px;overflow:hidden}#bpmn-canvas svg{font-family:Vazir,sans-serif}.bpmn-toolbar{display:flex;gap:8px;flex-wrap:wrap}.bjs-powered-by{display:block} @media(max-width:600px){#bpmn-canvas{height:480px}}
+
+.bpmn-preview:fullscreen{background:#fff;padding:20px;box-sizing:border-box;overflow:auto}.bpmn-preview:fullscreen #bpmn-canvas{height:calc(100vh - 180px)}#bpmn-canvas .djs-label{font-family:Vazir,sans-serif!important;font-size:12px!important}#bpmn-canvas .djs-connection path{stroke:#334155!important}#bpmn-canvas .djs-container{width:100%;height:100%}
+
+#bpmn-canvas svg text{direction:ltr;unicode-bidi:plaintext}#bpmn-canvas .djs-visual rect{fill:#f0f5fc!important;stroke:#334d70!important}#bpmn-canvas .djs-visual polygon{fill:#fff7df!important;stroke:#8a6824!important}
+
+#bpmn-canvas .bpmn-task-title{box-sizing:border-box;width:100%;height:100%;display:flex;align-items:center;justify-content:center;text-align:center;direction:rtl;unicode-bidi:isolate;white-space:normal;overflow-wrap:break-word;line-height:1.55;font:12px/1.55 Vazir,sans-serif;color:#172b46;padding:0 3px;overflow:hidden}

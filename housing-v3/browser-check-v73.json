@@ -1,0 +1,10 @@
+{
+  "screenshots": 14,
+  "pageErrors": [],
+  "checks": [
+    "14 role/state renders",
+    "correction decision summary present",
+    "landing renders"
+  ],
+  "fullEndToEnd": false
+}

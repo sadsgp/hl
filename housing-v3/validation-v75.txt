@@ -1,0 +1,1 @@
+PASS: unauthenticated redirects for 7 pages; invalid credentials rejected; correct credentials accepted; local ERD rendered as SVG; role names verified. Correction drawer: ["نظرات و تصمیم‌های ثبت‌شده","اصلاح پیوست‌ها و مدارک","لاگ‌ها و سابقه گردش پرونده (۱ رویداد)"]
