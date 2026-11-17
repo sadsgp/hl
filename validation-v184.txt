@@ -1,0 +1,5 @@
+PASS: 35 BPMN flows with reciprocal references; unique IDs; independent + 7 embedded models identical; 17 available static forms; ERD 22 entities/32 relations; extension loaded once per role page; v183 access preserved.
+PASS: title/file validation, empty submission, locks, required return reason, two correction rounds, immutable submission snapshots, HR-only finalization, terminal guards, report-to-evidence transition.
+
+Browser verification: NOT RUN (browser tooling package integrity verification failed).
+Non-interactive updated/new forms: fixed HTML layouts 10, 15, 16, 17, not screenshots.

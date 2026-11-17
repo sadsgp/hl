@@ -5,7 +5,8 @@ function decisionTimeline(r){
  const admin=roleInfo.admin[0],hr=roleInfo.hr[0],executive=roleInfo.executive[0];
  if(r.initialApplicantAt)add(r.initialApplicantAt,'متقاضی','تأیید اطلاعات اولیه با کد نمایشی',r.person?.name);
  for(const x of r.exceptionActions||[])add(x.at,x.by,({forward:'ارجاع استثنایی به مقام اجرایی',refer:'ارجاع استثنایی به مدیر سرمایه انسانی',continue:'مجوز ادامه بررسی استثنایی',close:'بستن درخواست استثنایی'}[x.action]||x.action)+'\nنظر: '+x.opinion,x.name);
- if(r.exceptionWorkgroupReviewed)add(r.exceptionWorkgroupAt,hr,'نظر کارگروه در بررسی استثنایی: '+r.exceptionWorkgroupOpinion);
+ if(r.exceptionWorkgroupOpinion)add(r.exceptionWorkgroupAt,hr,'نظر کارگروه درباره درخواست غیرمشمول:\n'+r.exceptionWorkgroupOpinion);
+ if(r.exceptionDecision && !(r.exceptionActions||[]).some(x=>['continue','close'].includes(x.action)&&x.opinion===r.exceptionDecision))add(r.exceptionApproval?.at||r.exceptionClosedAt||r.exceptionWorkgroupAt,hr,'تصمیم مدیر سرمایه انسانی درباره استثنا:\n'+r.exceptionDecision);
  if(r.applicantAt)add(r.applicantAt,'متقاضی','تأیید اطلاعات و مدارک با کد نمایشی',r.person?.name);
  if(r.withdrawAt)add(r.withdrawAt,'متقاضی','انصراف صریح از درخواست\n'+(r.withdrawReason||'بدون توضیح'),r.person?.name);
  if(r.executiveAt)add(r.executiveAt,executive,(r.executiveApproved===false||r.state==='executive_rejected'?'عدم تأیید درخواست':'تأیید درخواست')+'\nنظر: '+(r.executiveReason||'بدون توضیح تکمیلی'),r.executiveBy);
@@ -22,7 +23,13 @@ function decisionTimeline(r){
  add(round.at,roleInfo[round.role]?.[0]||round.role,'بازگشت برای اصلاح\nدلیل: '+round.reason,round.by);
  if(round.resubmittedAt)add(round.resubmittedAt,admin,'ثبت اصلاحات و ارسال مجدد به مقام اجرایی\nشرح اصلاحات: '+(round.response||''));
  }
- for(const x of r.history||[])if(/مشاهده.*گزارش|گزارش.*مشاهده/.test(x.text))add(x.at,x.actor,x.text,x.actorName);
+ for(const note of r.evidenceAdminNotes||[])add(note.at,admin,'توضیحات سرپرست اداری درباره اسناد مثبته:\n'+note.text,note.by);
+ for(const [i,round] of (r.evidenceRounds||[]).entries()){
+  add(round.submittedAt,admin,'ارسال اسناد مثبته به مدیر سرمایه انسانی — نوبت '+(i+1).toLocaleString('fa-IR')+(round.adminDescription?'\nتوضیحات: '+round.adminDescription:''),round.submittedBy);
+  if(round.reviewedAt)add(round.reviewedAt,hr,(round.result==='finish'?'تأیید اسناد مثبته و پایان و اتمام درخواست':'بازگشت اسناد مثبته به سرپرست اداری برای اصلاح')+'\nنظر / دلیل: '+(round.note||'بدون توضیح تکمیلی'),round.reviewedBy);
+ }
+ if(r.completedAt&&!(r.evidenceRounds||[]).some(x=>x.result==='finish'))add(r.completedAt,hr,'پایان و اتمام درخواست\n'+(r.evidenceReviewNote||''));
+ for(const x of r.history||[])if(/مشاهده.*گزارش|گزارش.*مشاهده|ثبت سند مثبته|حذف سند مثبته/.test(x.text))add(x.at,x.actor,x.text,x.actorName);
  const seen=new Set();for(let i=entries.length-1;i>=0;i--){const key=JSON.stringify([entries[i].at,entries[i].role,entries[i].text]);if(seen.has(key))entries.splice(i,1);else seen.add(key);}
  entries.sort((a,b)=>a.at-b.at);
  return entries.length?'<ol class="decision-timeline">'+entries.map(x=>'<li class="note" style="margin-block:12px;border-inline-start:4px solid #2563eb"><b style="color:#1d4ed8">'+esc(x.role)+'</b><div>نام و نام خانوادگی: <strong style="color:#9d174d">'+esc(x.name)+'</strong></div><small>'+(x.at?fa(x.at):'زمان ثبت موجود نیست')+'</small><div style="white-space:pre-wrap;margin-top:8px">'+esc(x.text)+'</div></li>').join('')+'</ol>':'<p class="muted">هنوز نظر یا تصمیمی ثبت نشده است.</p>';

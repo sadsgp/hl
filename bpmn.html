@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html dir="rtl" lang="fa"><head><style id="auth-cloak">html{visibility:hidden!important}</style><script src="auth.js"></script><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>تسهیلات خرید یا ساخت مسکن | مرکز پروژه</title><link href="styles.css?v=73" rel="stylesheet"/><link href="analysis.css?v=85-85-85-85-79" rel="stylesheet"/><link href="roles-v52.css" rel="stylesheet"/><link href="landing-tabs.css?v=116" rel="stylesheet"/><link href="form-prototypes.css?v=73" rel="stylesheet"/><link href="project-navigation.css?v=120" rel="stylesheet"/></head><body><main class="landing"><div class="home-return-row"><a class="home-return-link" href="index.html">بازگشت به صفحه اصلی ←</a></div><h1>نمودار گردش فرآیند BPMN</h1><details id="analysis-bpmn" open=""><summary>۱۴. مدل استاندارد BPMN 2.0 گردش درخواست</summary><p>مدل تحلیلی فرایند با شش Lane برای نقش‌های سازمانی، فعالیت‌های انسانی (User Task)، دروازه‌های تصمیم انحصاری (Exclusive Gateway)، رویداد شروع و پایان و جریان‌های توالی تهیه شده است. فایل دارای اطلاعات چیدمان BPMN DI است و برای ورود به مدل‌سازهای سازگار با BPMN 2.0 ارائه می‌شود.</p><p><a class="btn primary" download="" href="models/housing-workflow.bpmn">دانلود مدل استاندارد BPMN 2.0 (.bpmn)</a></p><div class="bpmn-preview"><h3>نمایش نمودار BPMN</h3><div class="bpmn-toolbar"><button class="btn" id="bpmn-in" type="button">بزرگ‌نمایی +</button> <button class="btn" id="bpmn-out" type="button">کوچک‌نمایی −</button> <button class="btn" id="bpmn-fullscreen" type="button">نمایش تمام‌صفحه</button><button class="btn" id="bpmn-fit" type="button">نمایش کامل نمودار</button></div><p id="bpmn-status" role="status">در حال آماده‌سازی نمودار…</p><div aria-label="نمودار BPMN گردش تسهیلات مسکن" dir="ltr" id="bpmn-canvas"></div></div><h3>خوانش مسیر اصلی</h3><ol><li>شروع ← ثبت درخواست توسط سرپرست ← استعلام و OTP اولیه.</li><li>دروازه احراز: عدم احراز به بررسی استثنا توسط سرپرست، مقام اجرایی و مدیر سرمایه انسانی؛ مجوز ادامه با حفظ اخطار به دریافت مدارک و تصمیم بستن به پایان استثنا؛ احراز مثبت به دریافت مدارک، ثبت اوراق احتمالی و تأیید اصالت.</li><li>متقاضی اطلاعات و مدارک را بررسی می‌کند: انصراف صریح به پایان انصراف؛ تأیید با OTP معتبر به مقام اجرایی.</li><li>دروازه اجرایی: رد با دلیل به پایان رد اجرایی؛ تأیید به نظر اولیه سرمایه انسانی.</li><li>دروازه تصمیم اولیه: رد با دلیل به پایان رد سرمایه انسانی؛ ارجاع با نظر و مبلغ مصوب معتبر به تحقیقات.</li><li>نتیجه تحقیقات، مثبت یا منفی، به تصمیم نهایی سرمایه انسانی می‌رود؛ نتیجه منفی به‌خودی‌خود رد خودکار نیست.</li><li>تصمیم نهایی: رد به پایان رد سرمایه انسانی؛ تأیید به ثبت گزارش‌های کارشناس اداری.</li><li>چرخه گزارش: ذخیره گزارش عنوان‌دار و امکان ثبت گزارش بعدی؛ ارسال فقط با حداقل یک گزارش و بدون اطلاعات ذخیره‌نشده.</li><li>مشاهده گزارش‌ها توسط سرمایه انسانی ← پایان گردش؛ این پایان، اثبات پرداخت بانکی نیست.</li></ol><h3>معنای عناصر و قواعد تکمیلی</h3><ul><li>Lane نشان‌دهنده مسئولیت نقش است، نه مجوز امنیتی؛ تمام نقش‌ها در یک Process سازمانی مدل شده‌اند.</li><li>انشعاب‌ها انحصاری‌اند؛ در این گردش موازی‌سازی و Parallel Gateway تعریف نشده است.</li><li>درخواست هزینه اوراق یک فرایند موازی مستقل نیست؛ قاعده شرطی فعالیت دریافت مدارک است: مبلغ مثبت تا سقف ۱۰ میلیارد ریال و دو دسته مدرک اضافی الزامی می‌شود.</li><li>نظر کارگروه در نقاط مربوط مطابق قواعد بخش‌های قبل اعتبارسنجی می‌شود؛ مدل، اختلاف فعلی کنترل آن در رد اولیه را حذف یا پنهان نمی‌کند.</li><li>بی‌اقدامی به معنای انتظار در فعالیت است؛ مسیر خودکار انصراف یا رویداد زمان‌دار برای خاتمه پرونده وجود ندارد.</li><li>کد OTP نامعتبر و مدارک ناقص موجب خروج از فعالیت نمی‌شوند؛ کاربر تا تکمیل صحیح در همان مرحله می‌ماند.</li><li>استعلام و پیامک واقعی در نمونه وجود ندارند؛ بنابراین Service Task اجرایی یا Message Flow واقعی برای سرویس خارجی تعریف نشده است.</li></ul><div class="note strong">دامنه فایل: مدل تحلیلی و غیرقابل‌اجرای مستقیم (isExecutable=false). برای استقرار روی موتور فرایند باید فرم‌ها، متغیرها، عبارت‌های شرطی اجرایی، تخصیص کاربران، سرویس‌ها، مدیریت خطا و امنیت متناسب با موتور مقصد تکمیل شوند. نام جریان‌ها شرایط تجاری را توضیح می‌دهد؛ جایگزین کد شرط اجرایی نیست.</div></details></main><script src="assets/mermaid.min.js"></script><script>mermaid.initialize({startOnLoad:false,securityLevel:"strict",theme:"default",er:{useMaxWidth:false}});</script><script src="form-prototypes.js?v=75"></script><script src="landing-reset.js?v=73"></script><script id="bpmn-source" type="text/plain"><?xml version="1.0" encoding="UTF-8"?>
-<definitions exporter="Visual Paradigm" exporterVersion="1" id="Definition" targetNamespace="http://www.omg.org/bpmn20" xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" xmlns:vp="http://www.visual-paradigm.com/bpmn/vpspecificcontent" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL http://www.omg.org/spec/BPMN/20100501/BPMN20.xsd">
+<html dir="rtl" lang="fa"><head><style id="auth-cloak">html{visibility:hidden!important}</style><script src="auth.js"></script><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>تسهیلات خرید یا ساخت مسکن | مرکز پروژه</title><link href="styles.css?v=73" rel="stylesheet"/><link href="analysis.css?v=85-85-85-85-79" rel="stylesheet"/><link href="roles-v52.css" rel="stylesheet"/><link href="landing-tabs.css?v=116" rel="stylesheet"/><link href="form-prototypes.css?v=73" rel="stylesheet"/><link href="project-navigation.css?v=209" rel="stylesheet"/><script src="all-details-toggle.js?v=195" defer></script></head><body><main class="landing"><div class="home-return-row"><a class="home-return-link" href="index.html">بازگشت به صفحه اصلی ←</a></div><h1>نمودار گردش فرآیند BPMN</h1><details id="analysis-bpmn" open=""><summary>۱۴. مدل استاندارد BPMN 2.0 گردش درخواست</summary><p>مدل تحلیلی فرایند با شش Lane برای نقش‌های سازمانی، فعالیت‌های انسانی (User Task)، دروازه‌های تصمیم انحصاری (Exclusive Gateway)، رویداد شروع و پایان و جریان‌های توالی تهیه شده است. فایل دارای اطلاعات چیدمان BPMN DI است و برای ورود به مدل‌سازهای سازگار با BPMN 2.0 ارائه می‌شود.</p><p><a class="btn primary" download="" href="models/housing-workflow.bpmn">دانلود مدل استاندارد BPMN 2.0 (.bpmn)</a></p><div class="bpmn-preview"><h3>نمایش نمودار BPMN</h3><div class="bpmn-toolbar"><button class="btn" id="bpmn-in" type="button">بزرگ‌نمایی +</button> <button class="btn" id="bpmn-out" type="button">کوچک‌نمایی −</button> <button class="btn" id="bpmn-fullscreen" type="button">نمایش تمام‌صفحه</button><button class="btn" id="bpmn-fit" type="button">نمایش کامل نمودار</button></div><p id="bpmn-status" role="status">در حال آماده‌سازی نمودار…</p><div aria-label="نمودار BPMN گردش تسهیلات مسکن" dir="ltr" id="bpmn-canvas"></div></div><h3>خوانش مسیر اصلی</h3><ol><li>شروع ← ثبت درخواست توسط سرپرست ← استعلام و OTP اولیه.</li><li>دروازه احراز: عدم احراز به بررسی استثنا توسط سرپرست، مقام اجرایی و مدیر سرمایه انسانی؛ مجوز ادامه با حفظ اخطار به دریافت مدارک و تصمیم بستن به پایان استثنا؛ احراز مثبت به دریافت مدارک، ثبت اوراق احتمالی و تأیید اصالت.</li><li>متقاضی اطلاعات و مدارک را بررسی می‌کند: انصراف صریح به پایان انصراف؛ تأیید با OTP معتبر به مقام اجرایی.</li><li>دروازه اجرایی: رد با دلیل به پایان رد اجرایی؛ تأیید به نظر اولیه سرمایه انسانی.</li><li>دروازه تصمیم اولیه: رد با دلیل به پایان رد سرمایه انسانی؛ ارجاع با نظر و مبلغ مصوب معتبر به تحقیقات.</li><li>نتیجه تحقیقات، مثبت یا منفی، به تصمیم نهایی سرمایه انسانی می‌رود؛ نتیجه منفی به‌خودی‌خود رد خودکار نیست.</li><li>تصمیم نهایی: رد به پایان رد سرمایه انسانی؛ تأیید به ثبت گزارش‌های کارشناس اداری.</li><li>چرخه گزارش: ذخیره گزارش عنوان‌دار و امکان ثبت گزارش بعدی؛ ارسال فقط با حداقل یک گزارش و بدون اطلاعات ذخیره‌نشده.</li><li>مشاهده گزارش‌ها توسط سرمایه انسانی ← پایان گردش؛ این پایان، اثبات پرداخت بانکی نیست.</li></ol><h3>معنای عناصر و قواعد تکمیلی</h3><ul><li>Lane نشان‌دهنده مسئولیت نقش است، نه مجوز امنیتی؛ تمام نقش‌ها در یک Process سازمانی مدل شده‌اند.</li><li>انشعاب‌ها انحصاری‌اند؛ در این گردش موازی‌سازی و Parallel Gateway تعریف نشده است.</li><li>درخواست هزینه اوراق یک فرایند موازی مستقل نیست؛ قاعده شرطی فعالیت دریافت مدارک است: مبلغ مثبت تا سقف ۱۰ میلیارد ریال و دو دسته مدرک اضافی الزامی می‌شود.</li><li>نظر کارگروه در نقاط مربوط مطابق قواعد بخش‌های قبل اعتبارسنجی می‌شود؛ مدل، اختلاف فعلی کنترل آن در رد اولیه را حذف یا پنهان نمی‌کند.</li><li>بی‌اقدامی به معنای انتظار در فعالیت است؛ مسیر خودکار انصراف یا رویداد زمان‌دار برای خاتمه پرونده وجود ندارد.</li><li>کد OTP نامعتبر و مدارک ناقص موجب خروج از فعالیت نمی‌شوند؛ کاربر تا تکمیل صحیح در همان مرحله می‌ماند.</li><li>استعلام و پیامک واقعی در نمونه وجود ندارند؛ بنابراین Service Task اجرایی یا Message Flow واقعی برای سرویس خارجی تعریف نشده است.</li></ul><div class="note strong">دامنه فایل: مدل تحلیلی و غیرقابل‌اجرای مستقیم (isExecutable=false). برای استقرار روی موتور فرایند باید فرم‌ها، متغیرها، عبارت‌های شرطی اجرایی، تخصیص کاربران، سرویس‌ها، مدیریت خطا و امنیت متناسب با موتور مقصد تکمیل شوند. نام جریان‌ها شرایط تجاری را توضیح می‌دهد؛ جایگزین کد شرط اجرایی نیست.</div></details></main><script src="assets/mermaid.min.js"></script><script>mermaid.initialize({startOnLoad:false,securityLevel:"strict",theme:"default",er:{useMaxWidth:false}});</script><script src="form-prototypes.js?v=185"></script><script src="landing-reset.js?v=73"></script><script id="bpmn-source" type="text/plain"><?xml version='1.0' encoding='UTF-8'?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" xmlns:vp="http://www.visual-paradigm.com/bpmn/vpspecificcontent" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" exporter="Visual Paradigm" exporterVersion="1" id="Definition" targetNamespace="http://www.omg.org/bpmn20" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL http://www.omg.org/spec/BPMN/20100501/BPMN20.xsd">
 	<collaboration id="collaboration-Diagram">
 		<extensionElements>
 			<vp:Extensions>
@@ -1812,7 +1812,7 @@
 				<flowNodeRef>correctRequest</flowNodeRef>
 				<flowNodeRef>Merge_docs</flowNodeRef>
 				<flowNodeRef>Merge_correctRequest</flowNodeRef>
-			</lane>
+			<flowNodeRef>facilityEvidenceUpload</flowNodeRef></lane>
 			<lane id="Lane_Applicant" name="متقاضی">
 				<extensionElements>
 					<vp:Extensions>
@@ -1880,7 +1880,7 @@
 				<flowNodeRef>exceptionDecision</flowNodeRef>
 				<flowNodeRef>exceptionClosed</flowNodeRef>
 				<flowNodeRef>Lane_HR_BP01</flowNodeRef>
-			</lane>
+			<flowNodeRef>facilityEvidenceReview</flowNodeRef><flowNodeRef>facilityEvidenceDecision</flowNodeRef></lane>
 			<lane id="Lane_Research" name="کارشناس تحقیقات">
 				<extensionElements>
 					<vp:Extensions>
@@ -2409,7 +2409,7 @@
 					</vp:ModelExtension>
 				</vp:Extensions>
 			</extensionElements>
-			<incoming>Flow_23</incoming>
+			<incoming>EvidenceFlow_finish</incoming>
 		</endEvent>
 		<userTask completionQuantity="1" id="correctRequest" implementation="##unspecified" isForCompensation="false" name="اصلاح اطلاعات با شرح الزامی" startQuantity="1">
 			<extensionElements>
@@ -2644,7 +2644,7 @@
 				</vp:Extensions>
 			</extensionElements>
 		</sequenceFlow>
-		<sequenceFlow id="Flow_23" name="ثبت مشاهده" sourceRef="seen" targetRef="complete">
+		<sequenceFlow id="Flow_23" name="ارسال برای بارگذاری اسناد مثبته" sourceRef="seen" targetRef="facilityEvidenceUpload">
 			<extensionElements>
 				<vp:Extensions>
 					<vp:ModelExtension>
@@ -3161,26 +3161,26 @@
 				</vp:Extensions>
 			</extensionElements>
 		</sequenceFlow>
-	</process>
+	<userTask id="facilityEvidenceUpload" name="بارگذاری اسناد مثبته تسهیلات دریافت شده"><incoming>Flow_23</incoming><incoming>EvidenceFlow_return</incoming><outgoing>EvidenceFlow_submit</outgoing></userTask><userTask id="facilityEvidenceReview" name="بررسی اسناد مثبته تسهیلات دریافت شده و تصمیم نهایی"><incoming>EvidenceFlow_submit</incoming><outgoing>EvidenceFlow_decide</outgoing></userTask><exclusiveGateway id="facilityEvidenceDecision" name="اسناد مثبته کامل و مورد تأیید است؟" default="EvidenceFlow_return"><incoming>EvidenceFlow_decide</incoming><outgoing>EvidenceFlow_finish</outgoing><outgoing>EvidenceFlow_return</outgoing></exclusiveGateway><sequenceFlow id="EvidenceFlow_submit" name="اتمام بارگذاری / ارسال مجدد پس از اصلاح" sourceRef="facilityEvidenceUpload" targetRef="facilityEvidenceReview"/><sequenceFlow id="EvidenceFlow_decide" name="" sourceRef="facilityEvidenceReview" targetRef="facilityEvidenceDecision"/><sequenceFlow id="EvidenceFlow_finish" name="تأیید؛ پایان و اتمام درخواست" sourceRef="facilityEvidenceDecision" targetRef="complete"><conditionExpression xsi:type="tFormalExpression">evidenceApproved = true</conditionExpression></sequenceFlow><sequenceFlow id="EvidenceFlow_return" name="نیازمند اصلاح؛ با ذکر دلیل" sourceRef="facilityEvidenceDecision" targetRef="facilityEvidenceUpload"/></process>
 	<bpmndi:BPMNDiagram id="diagram-Diagram" name="گردش درخواست تسهیلات مسکن">
 		<bpmndi:BPMNPlane bpmnElement="collaboration-Diagram" id="plane-Diagram">
 			<bpmndi:BPMNShape bpmnElement="Lane_Admin" id="DI_Lane_Admin" isHorizontal="true">
-				<omgdc:Bounds height="500" width="7920" x="66" y="60"/>
+				<omgdc:Bounds height="500" width="10020" x="66" y="60"/>
 			</bpmndi:BPMNShape>
 			<bpmndi:BPMNShape bpmnElement="Lane_Applicant" id="DI_Lane_Applicant" isHorizontal="true">
-				<omgdc:Bounds height="500" width="7920" x="66" y="560"/>
+				<omgdc:Bounds height="500" width="10020" x="66" y="560"/>
 			</bpmndi:BPMNShape>
 			<bpmndi:BPMNShape bpmnElement="Lane_Executive" id="DI_Lane_Executive" isHorizontal="true">
-				<omgdc:Bounds height="490" width="7920" x="66" y="1060"/>
+				<omgdc:Bounds height="490" width="10020" x="66" y="1060"/>
 			</bpmndi:BPMNShape>
 			<bpmndi:BPMNShape bpmnElement="Lane_HR" id="DI_Lane_HR" isHorizontal="true">
-				<omgdc:Bounds height="500" width="7920" x="66" y="1550"/>
+				<omgdc:Bounds height="500" width="10020" x="66" y="1550"/>
 			</bpmndi:BPMNShape>
 			<bpmndi:BPMNShape bpmnElement="Lane_Research" id="DI_Lane_Research" isHorizontal="true">
-				<omgdc:Bounds height="490" width="7920" x="66" y="2050"/>
+				<omgdc:Bounds height="490" width="10020" x="66" y="2050"/>
 			</bpmndi:BPMNShape>
 			<bpmndi:BPMNShape bpmnElement="Lane_Officer" id="DI_Lane_Officer" isHorizontal="true">
-				<omgdc:Bounds height="500" width="7920" x="66" y="2540"/>
+				<omgdc:Bounds height="500" width="10020" x="66" y="2540"/>
 			</bpmndi:BPMNShape>
 			<bpmndi:BPMNShape bpmnElement="register" id="DI_register">
 				<omgdc:Bounds height="100" width="210" x="588" y="190"/>
@@ -3238,7 +3238,7 @@
 				<omgdc:Bounds height="100" width="210" x="7086" y="1800"/>
 			</bpmndi:BPMNShape>
 			<bpmndi:BPMNShape bpmnElement="complete" id="DI_complete">
-				<omgdc:Bounds height="40" width="40" x="7620" y="1830"/>
+				<omgdc:Bounds height="40" width="40" x="9700" y="1830"/>
 			</bpmndi:BPMNShape>
 			<bpmndi:BPMNShape bpmnElement="correctRequest" id="DI_correctRequest">
 				<omgdc:Bounds height="100" width="210" x="4720" y="339"/>
@@ -3268,10 +3268,6 @@
 				<omgdi:waypoint x="1616" y="259"/>
 				<omgdi:waypoint x="1616" y="349"/>
 			<bpmndi:BPMNLabel><omgdc:Bounds x="1586" y="290" width="60" height="28"/></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
-			<bpmndi:BPMNEdge bpmnElement="Flow_23" id="DI_Flow_23">
-				<omgdi:waypoint x="7296" y="1850"/>
-				<omgdi:waypoint x="7620" y="1850"/>
-			</bpmndi:BPMNEdge>
 			<bpmndi:BPMNEdge bpmnElement="Ex5" id="DI_Ex5">
 				<omgdi:waypoint x="2165" y="1890"/>
 				<omgdi:waypoint x="2570" y="1890"/>
@@ -3405,8 +3401,9 @@
 				<omgdi:waypoint x="6306" y="1666"/>
 			</bpmndi:BPMNEdge>
 			<bpmndi:BPMNShape bpmnElement="Roles" id="Roles-Diagram" isHorizontal="true">
-				<omgdc:Bounds height="2980" width="7935" x="51" y="60"/>
+				<omgdc:Bounds height="2980" width="10086" x="51" y="60"/>
 			</bpmndi:BPMNShape>
-		</bpmndi:BPMNPlane>
+		<bpmndi:BPMNShape id="DI_facilityEvidenceUpload" bpmnElement="facilityEvidenceUpload"><omgdc:Bounds x="7780" y="190" width="240" height="110"/></bpmndi:BPMNShape><bpmndi:BPMNShape id="DI_facilityEvidenceReview" bpmnElement="facilityEvidenceReview"><omgdc:Bounds x="8480" y="1800" width="250" height="110"/></bpmndi:BPMNShape><bpmndi:BPMNShape id="DI_facilityEvidenceDecision" bpmnElement="facilityEvidenceDecision"><omgdc:Bounds x="9110" y="1835" width="40" height="40"/></bpmndi:BPMNShape><bpmndi:BPMNEdge id="DI_Flow_23" bpmnElement="Flow_23"><omgdi:waypoint x="7296" y="1850"/><omgdi:waypoint x="7520" y="1850"/><omgdi:waypoint x="7520" y="245"/><omgdi:waypoint x="7780" y="245"/><bpmndi:BPMNLabel><omgdc:Bounds x="7530" y="800" width="200" height="50"/></bpmndi:BPMNLabel></bpmndi:BPMNEdge><bpmndi:BPMNEdge id="DI_EvidenceFlow_submit" bpmnElement="EvidenceFlow_submit"><omgdi:waypoint x="8020" y="245"/><omgdi:waypoint x="8605" y="245"/><omgdi:waypoint x="8605" y="1800"/><bpmndi:BPMNLabel><omgdc:Bounds x="8620" y="800" width="200" height="50"/></bpmndi:BPMNLabel></bpmndi:BPMNEdge><bpmndi:BPMNEdge id="DI_EvidenceFlow_decide" bpmnElement="EvidenceFlow_decide"><omgdi:waypoint x="8730" y="1855"/><omgdi:waypoint x="9110" y="1855"/></bpmndi:BPMNEdge><bpmndi:BPMNEdge id="DI_EvidenceFlow_finish" bpmnElement="EvidenceFlow_finish"><omgdi:waypoint x="9150" y="1855"/><omgdi:waypoint x="9700.635083" y="1855"/><bpmndi:BPMNLabel><omgdc:Bounds x="9380" y="1780" width="200" height="50"/></bpmndi:BPMNLabel></bpmndi:BPMNEdge><bpmndi:BPMNEdge id="DI_EvidenceFlow_return" bpmnElement="EvidenceFlow_return"><omgdi:waypoint x="9130" y="1835"/><omgdi:waypoint x="9130" y="120"/><omgdi:waypoint x="7900" y="120"/><omgdi:waypoint x="7900" y="190"/><bpmndi:BPMNLabel><omgdc:Bounds x="8820" y="85" width="200" height="32"/></bpmndi:BPMNLabel></bpmndi:BPMNEdge></bpmndi:BPMNPlane>
 	</bpmndi:BPMNDiagram>
-</definitions></script><script src="assets/bpmn-viewer.min.js"></script><script src="bpmn-preview.js?v=121"></script></body></html>
+</definitions>
+</script><script src="assets/bpmn-viewer.min.js"></script><script src="bpmn-task-forms.js?v=214"></script><script src="bpmn-preview.js?v=214"></script></body></html>

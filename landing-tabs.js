@@ -81,7 +81,7 @@
     nav.append(button);
     shell.append(panel);
     button.addEventListener('click', () => {
-      if (index === 0) { window.location.href = 'prototype.html'; return; }
+      if (index === 0) { window.location.href = 'prototype.html?entry=home'; return; }
       activate(index); panel.scrollIntoView({behavior: 'smooth', block: 'start'});
     });
     button.addEventListener('keydown', event => {

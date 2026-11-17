@@ -188,3 +188,31 @@ erDiagram
  text description
  datetime occurred_at
  }
+
+    FACILITY_EVIDENCE {
+        uuid id PK
+        uuid request_id FK
+        string title
+        datetime created_at
+        string created_by
+    }
+    EVIDENCE_ATTACHMENT {
+        uuid id PK
+        uuid evidence_id FK
+        string file_name
+        binary content
+    }
+    EVIDENCE_REVIEW {
+        uuid id PK
+        uuid request_id FK
+        json documents_snapshot
+        text admin_description
+        datetime submitted_at
+        datetime reviewed_at
+        string reviewer
+        string result
+        text note
+    }
+    HOUSING_REQUEST ||--o{ FACILITY_EVIDENCE : has_evidence
+    FACILITY_EVIDENCE ||--|{ EVIDENCE_ATTACHMENT : includes_files
+    HOUSING_REQUEST ||--o{ EVIDENCE_REVIEW : evidence_reviews

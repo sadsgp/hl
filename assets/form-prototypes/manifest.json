@@ -54,8 +54,8 @@
     "state": "awaiting_officer"
   },
   {
-    "file": "form-10.png",
-    "title": "مشاهده گزارش‌ها و پایان گردش",
+    "file": "form-10.html",
+    "title": "مشاهده گزارش‌ها و ارجاع برای اسناد مثبته",
     "role": "hr",
     "state": "awaiting_hr_report"
   },
@@ -82,5 +82,23 @@
     "title": "اصلاح سرپرست اداری و مشاهده نظرات ثبت‌شده",
     "role": "admin",
     "state": "awaiting_admin_correction"
+  },
+  {
+    "file": "form-15.html",
+    "title": "بارگذاری اسناد مثبته تسهیلات دریافت شده",
+    "role": "admin",
+    "state": "awaiting_evidence"
+  },
+  {
+    "file": "form-16.html",
+    "title": "بررسی اسناد مثبته و اتمام یا بازگشت اصلاحی",
+    "role": "hr",
+    "state": "awaiting_evidence_review"
+  },
+  {
+    "file": "form-17.html",
+    "title": "اصلاح اسناد مثبته پس از بازگشت مدیر سرمایه انسانی",
+    "role": "admin",
+    "state": "evidence_correction"
   }
 ]

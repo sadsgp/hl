@@ -291,6 +291,7 @@
           foreign.appendChild(title);
           visual.appendChild(foreign);
         });
+      window.attachBpmnForms?.(viewer.get('elementRegistry'), canvas);
       }
       applyTheme();
       applyLaneTheme();
