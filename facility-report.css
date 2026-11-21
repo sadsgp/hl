@@ -1,0 +1,12 @@
+.facility-report{box-sizing:border-box;width:min(1280px,94vw);min-height:min(520px,82vh);max-height:90vh;overflow:auto;padding:clamp(14px,3vw,28px);border:1px solid #d8e1ed;border-radius:18px;background:#fff;color:#142b48;box-shadow:0 18px 60px #081a3a40}
+.facility-report::backdrop{background:#081a3a99}
+.facility-report header{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.facility-report h2{margin:0}
+.facility-report-table{overflow:auto;border:1px solid #d8e1ed;border-radius:10px}
+.facility-report table{width:100%;table-layout:auto;border-collapse:collapse;text-align:right;min-width:1040px}
+.facility-report .facility-report-close{background:linear-gradient(135deg,#0e7490,#1d4ed8);color:#fff;border:0;border-radius:10px;padding:8px 18px;box-shadow:0 4px 12px #1d4ed840}
+.facility-report .facility-report-close:hover{background:linear-gradient(135deg,#155e75,#1e40af)}
+.facility-report .facility-report-close:focus-visible{outline:2px solid #1d4ed8;outline-offset:3px}
+.facility-report th,.facility-report td{padding:12px 14px;border-bottom:1px solid #d8e1ed;white-space:nowrap;word-break:normal;overflow-wrap:normal}
+.facility-report th{background:#edf3fa}
+.facility-report tr:last-child td{border-bottom:0}
